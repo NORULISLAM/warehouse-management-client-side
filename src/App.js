@@ -1,23 +1,37 @@
 import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Home from './component/Home/Home';
+import Loing from './component/Login/Loing';
+import LogOut from './component/LogOut/LogOut';
+import Header from './component/Header/Header';
+import Banner from './component/Banner/Banner';
+import About from './component/About/About';
+import Blog from './component/Blog/Blog';
+import AddItem from './component/AddItems/AddItem';
+import MangeItem from './component/ManageItem/MangeItem';
+import OtherServie from './component/ManageItem/OtherServies/OtherServie';
+import Footer from './component/Footer/Footer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header></Header>
+      <Routes>
+        <Route path='/' element={<Home></Home>}></Route>
+        <Route path='home' element={<Home></Home>}></Route>
+        <Route path='banner' element={<Banner></Banner>}></Route>
+        <Route path='otherServie' element={<OtherServie></OtherServie>}></Route>
+        <Route path='login' element={<Loing></Loing>}></Route>
+        <Route path='logout' element={<LogOut></LogOut>}></Route>
+        <Route path='about' element={<About></About>}></Route>
+        <Route path='blog' element={<Blog></Blog>}></Route>
+        <Route path='additem' element={<AddItem></AddItem>}></Route>
+        <Route path='mangeitem' element={<MangeItem></MangeItem>}></Route>
+
+      </Routes>
+      <Footer></Footer>
     </div>
   );
 }
