@@ -11,7 +11,6 @@ import About from './component/About/About';
 import Blog from './component/Blog/Blog';
 import AddItem from './component/AddItems/AddItem';
 import MangeItem from './component/ManageItem/MangeItem';
-import OtherServie from './component/ManageItem/OtherServies/OtherServie';
 import Footer from './component/Footer/Footer';
 import NotFound from './component/NotFound/NotFound';
 
@@ -23,7 +22,6 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='home' element={<Home></Home>}></Route>
         <Route path='banner' element={<Banner></Banner>}></Route>
-        <Route path='otherServie' element={<OtherServie></OtherServie>}></Route>
         <Route path='login' element={<Loing></Loing>}></Route>
         <Route path='logout' element={<LogOut></LogOut>}></Route>
         <Route path='about' element={<About></About>}></Route>

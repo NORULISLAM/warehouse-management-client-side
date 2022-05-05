@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Banner from '../Banner/Banner';
+import MangeItem from '../ManageItem/MangeItem';
 
 
 const product = [
@@ -131,22 +132,25 @@ const product = [
     }
 ]
 const Home = () => {
+    const [product, setProduct] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/service')
+            .then(res => res.json())
+            .then(data => setProduct(data));
+    }, [])
     return (
 
         <div className='mt-5 p-4'>
             <Banner></Banner>
             <div>
                 {
-                    product.slice(0, 6).map(product =>
+                    product.slice(0, 6).map(product => <MangeItem
+                        key={product._id}
+                        product={product}
+                    >
+                    </MangeItem>)
 
-                        <div className="card-body text-center">
-                            <img src={product.img} className="img-thumbnail rounded" alt="" />
-                            <h5 className="card-title">Card title{product.name}</h5>
-
-                            <p className="card-text"> Comment: {product.comment}</p>
-                            <h5>Rating: {product.ratings}</h5>
-                            <button>Update</button>
-                        </div>)
                 }
             </div>
 
