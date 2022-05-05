@@ -8,7 +8,7 @@ const Header = () => {
             {[false,].map((expand) => (
                 <Navbar key={expand} bg="info" fixed="top" expand={expand} className="mb-3 p-3">
                     <Container fluid>
-                        <Navbar.Brand href="#">INVENTORY MANAGEMENT</Navbar.Brand>
+                        <Navbar.Brand href="/home">INVENTORY MANAGEMENT</Navbar.Brand>
                         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas
                             id={`offcanvasNavbar-expand-${expand}`}

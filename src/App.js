@@ -13,6 +13,7 @@ import AddItem from './component/AddItems/AddItem';
 import MangeItem from './component/ManageItem/MangeItem';
 import OtherServie from './component/ManageItem/OtherServies/OtherServie';
 import Footer from './component/Footer/Footer';
+import NotFound from './component/NotFound/NotFound';
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
         <Route path='blog' element={<Blog></Blog>}></Route>
         <Route path='additem' element={<AddItem></AddItem>}></Route>
         <Route path='mangeitem' element={<MangeItem></MangeItem>}></Route>
-
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
     </div>

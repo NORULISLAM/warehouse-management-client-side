@@ -55,6 +55,13 @@ const Loing = () => {
     }
 
 
+    const navigateLogOut = event => {
+
+
+        navigate('/logout');
+    }
+
+
     return (
         <div className='container w-50 mx-auto'>
             <h2 className='text-primary text-center mt-4'>Please Login </h2>
@@ -84,7 +91,7 @@ const Loing = () => {
                     Log In
                 </Button>
             </Form>
-            <p>Create new account ? <Link to='/register' className='text-danger pe-auto text-decoration-none'>Please Register</Link></p>
+            <p>Create new account ? <Link to='/logout' className='text-danger pe-auto text-decoration-none' onClick={navigateLogOut}>Please Register</Link></p>
         </div>
     );
 };
