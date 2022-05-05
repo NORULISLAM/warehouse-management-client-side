@@ -145,6 +145,7 @@ const Home = () => {
 
                             <p className="card-text"> Comment: {product.comment}</p>
                             <h5>Rating: {product.ratings}</h5>
+                            <button>Update</button>
                         </div>)
                 }
             </div>
