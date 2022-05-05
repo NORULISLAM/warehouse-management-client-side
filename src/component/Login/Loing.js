@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Loing = () => {
 
@@ -50,8 +51,8 @@ const Loing = () => {
             })
     }
     if (user) {
-        navigate('/home')
-        // navigate(from, { replace: true });
+        // navigate('/home')
+        navigate(from, { replace: true });
     }
 
 
@@ -63,7 +64,7 @@ const Loing = () => {
 
 
     return (
-        <div className='container w-50 mx-auto'>
+        <div className='container-fluid w-50 mx-auto m-5 p-5'>
             <h2 className='text-primary text-center mt-4'>Please Login </h2>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -78,9 +79,10 @@ const Loing = () => {
                 </Form.Group>
 
 
-                <Button onClick={() => signInWithGoogle()} variant="primary" type="submit">
+                {/* <Button onClick={() => signInWithGoogle()} variant="primary" type="submit">
                     Google Sing In
-                </Button>
+                </Button> */}
+
                 {errorElement}
 
                 <Button variant="link" type="submit">
@@ -92,6 +94,7 @@ const Loing = () => {
                 </Button>
             </Form>
             <p>Create new account ? <Link to='/logout' className='text-danger pe-auto text-decoration-none' onClick={navigateLogOut}>Please Register</Link></p>
+            <SocialLogin></SocialLogin>
         </div>
     );
 };

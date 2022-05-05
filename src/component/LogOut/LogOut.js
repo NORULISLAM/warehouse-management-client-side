@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const LogOut = () => {
     const [error, setError] = useState('')
@@ -88,7 +89,7 @@ const LogOut = () => {
 
 
     return (
-        <div className='container w-50 mx-auto mt-5'>
+        <div className='container-fluid w-50 mx-auto m-5 p-5'>
             <h2 className='text-primary text-center mt-4'>Please Register </h2>
             <Form noValidate validated={validated} onSubmit={handleRegister}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -117,7 +118,7 @@ const LogOut = () => {
                 </Button>
             </Form>
             <p>Already an Account ? <Link to='/login' className='text-danger pe-auto text-decoration-none' onClick={navigateLogin}>Please Login</Link></p>
-
+            <SocialLogin></SocialLogin>
         </div>
     );
 };
