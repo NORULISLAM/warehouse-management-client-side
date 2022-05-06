@@ -1,7 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const MangeItem = ({ product }) => {
     const { _id, img, name, comment, quantity, seller, price } = product;
+    const navigate = useNavigate();
+    const navigateToAddItem = id => {
+        navigate(`/additem/${id}`);
+    }
+
     return (
         <div className="card-body text-center">
             <img src={img} className="img-thumbnail rounded" alt="" />
@@ -12,7 +18,7 @@ const MangeItem = ({ product }) => {
             <h5>Supplier Name: {seller}</h5>
             <h5>Price: {price}</h5>
 
-            <button>Update</button>
+            <button onClick={() => navigateToAddItem(_id)} className="btn btn-info">Update</button>
         </div>
     );
 };

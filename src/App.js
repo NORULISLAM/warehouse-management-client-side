@@ -13,6 +13,8 @@ import AddItem from './component/AddItems/AddItem';
 import MangeItem from './component/ManageItem/MangeItem';
 import Footer from './component/Footer/Footer';
 import NotFound from './component/NotFound/NotFound';
+import RequireAuth from './component/RequireAuth/RequireAuth';
+import AddServiceDetails from './component/AddServiceDetails/AddServiceDetails';
 
 function App() {
   return (
@@ -20,14 +22,27 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='home' element={<Home></Home>}></Route>
-        <Route path='banner' element={<Banner></Banner>}></Route>
-        <Route path='login' element={<Loing></Loing>}></Route>
-        <Route path='logout' element={<LogOut></LogOut>}></Route>
-        <Route path='about' element={<About></About>}></Route>
-        <Route path='blog' element={<Blog></Blog>}></Route>
-        <Route path='additem' element={<AddItem></AddItem>}></Route>
-        <Route path='mangeitem' element={<MangeItem></MangeItem>}></Route>
+        <Route path='/home' element={<Home></Home>}></Route>
+        <Route path='/banner' element={<Banner></Banner>}></Route>
+        <Route path='/login' element={<Loing></Loing>}></Route>
+        <Route path='/logout' element={<LogOut></LogOut>}></Route>
+        <Route path='/about' element={<About></About>}></Route>
+        <Route path='/blog' element={<Blog></Blog>}></Route>
+        <Route path='/additem/:serviceId' element={
+          <RequireAuth>
+            <AddItem></AddItem>
+
+          </RequireAuth>
+
+        }></Route>
+        <Route path='/addservice' element={
+          <RequireAuth>
+            <AddServiceDetails></AddServiceDetails>
+
+          </RequireAuth>
+
+        }></Route>
+        <Route path='/manageitem' element={<MangeItem></MangeItem>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
