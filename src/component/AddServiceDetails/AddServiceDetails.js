@@ -1,24 +1,35 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 const AddServiceDetails = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const { register, handleSubmit } = useForm();
+    const onSubmit = data => {
+        console.log(data)
+        const url = `http://localhost:5000/service`;
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+            })
+    };
+
     return (
         <div className='container-fluid w-50 mx-auto m-5 p-5'>
-            <h1>please add serviceitem</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                {/* register your input into the hook by invoking the "register" function */}
-                <input defaultValue="test" {...register("example")} />
-
-                {/* include validation with required or other standard HTML validation rules */}
-                <input {...register("exampleRequired", { required: true })} />
-                {/* errors will return when field validation fails  */}
-                {errors.exampleRequired && <span>This field is required</span>}
-
-                <input type="submit" />
+            <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
+                <input className='mb-3' placeholder='name' {...register("name", { required: true, maxLength: 20 })} />
+                <textarea className='mb-3' placeholder='description' {...register("description")} />
+                <input className='mb-3' placeholder='price' type="number" {...register("price")} />
+                <input className='mb-3' placeholder='Photo URL' type="text" {...register("img")} />
+                <input type="submit" value="Add Item" />
             </form>
         </div>
     );
-};
+}
+
 
 export default AddServiceDetails;
