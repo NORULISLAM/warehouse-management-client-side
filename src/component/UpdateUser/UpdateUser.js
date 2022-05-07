@@ -25,27 +25,22 @@ const UpdateUser = () => {
             .then(res => res.json())
             .then(result => {
                 console.log(result);
+                alert('User Details Update Successfull');
+
             })
     };
     return (
-        <div className='container-fluid mx-auto m-5 p-5'>
-            <h2 className='text-center mt-4'>Updating User: {update.name}</h2>
+        <div className='container-fluid w-50 mx-auto m-5 p-5'>
+            <h2 className='text-primary text-center mt-4'>Updating User: {update.name}</h2>
 
             <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
                 <input className='mb-3' placeholder='name' {...register("name")} />
-                <input className='mb-3' placeholder='Qantity' {...register("stock")} />
+                <input className='mb-3' placeholder='Qantity' type="number"{...register("stock")} />
                 <input className='mb-3' placeholder='price' type="number" {...register("price")} />
                 <input className='mb-3' placeholder='Photo URL' type="text" {...register("img")} />
                 <input type="submit" value="Update Item" />
             </form>
-            {/* <form onSubmit={handleUpdate}>
-                <input type="text" name="name" placeholder='Qantity' required />
-                <br />
-                <input type="email" name="name" placeholder='Email' required />
-                <br />
-                <input type="submit" value="Update Qantity" />
 
-            </form> */}
         </div>
     );
 };
