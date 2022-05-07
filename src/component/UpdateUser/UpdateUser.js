@@ -32,7 +32,7 @@ const UpdateUser = () => {
             <h2 className='text-center mt-4'>Updating User: {update.name}</h2>
 
             <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
-                <input className='mb-3' placeholder='name' {...register("name", { required: true, maxLength: 20 })} />
+                <input className='mb-3' placeholder='name' {...register("name")} />
                 <input className='mb-3' placeholder='Qantity' {...register("stock")} />
                 <input className='mb-3' placeholder='price' type="number" {...register("price")} />
                 <input className='mb-3' placeholder='Photo URL' type="text" {...register("img")} />

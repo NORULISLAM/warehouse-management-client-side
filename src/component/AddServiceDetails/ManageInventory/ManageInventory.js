@@ -33,7 +33,8 @@ const ManageInventory = () => {
                                 <th scope="col">Price:{inventor.price}</th>
                                 <th scope="col">Qantity:{inventor.stock}</th>
                                 <th scope="col">Supliyer:{inventor.seller}</th>
-                                <Link to={`/update/${inventor._id}`}><button>Update</button></Link>
+                                <th scope="col"><Link to={`/update/${inventor._id}`}><button className='btn btn-info'>Update</button></Link>
+                                </th>
                                 <th scope="col"> <button onClick={() => handleDelete(inventor._id)} className='btn btn-danger'>DELETE</button></th>
                             </tr>
 
