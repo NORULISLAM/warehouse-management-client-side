@@ -13,10 +13,10 @@ const Header = () => {
     }
     return (
         <>
-            {[false,].map((expand) => (
+            {[false, 'xl'].map((expand) => (
                 <Navbar key={expand} bg="info" fixed="top" expand={expand} className="mb-3 p-3">
                     <Container fluid>
-                        <Navbar.Brand href="/home">INVENTORY MANAGEMENT</Navbar.Brand>
+                        <Navbar.Brand href="/home">SHOTEZ WAREHOUSE</Navbar.Brand>
                         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas
                             id={`offcanvasNavbar-expand-${expand}`}
@@ -31,11 +31,19 @@ const Header = () => {
                             <Offcanvas.Body>
                                 <Nav className="justify-content-end flex-grow-1 pe-3">
                                     <Nav.Link as={Link} to="/home">Home</Nav.Link>
-                                    <Nav.Link as={Link} to="/manageitem">Manage Item</Nav.Link>
-                                    <Nav.Link as={Link} to="/additem">Add Item</Nav.Link>
-                                    <Nav.Link as={Link} to="/blog">Blog</Nav.Link>
-                                    <Nav.Link as={Link} to="/about">About</Nav.Link>
+
                                     <Nav>
+
+                                        {
+                                            user && <>
+                                                <Nav.Link as={Link} to="/managesinventory">Manage Inventory</Nav.Link>
+                                                <Nav.Link as={Link} to="/addservice">Add Item</Nav.Link>
+                                                <Nav.Link as={Link} to="/myitem">My Item</Nav.Link>
+
+                                            </>
+                                        }
+                                        <Nav.Link as={Link} to="/blog">Blog</Nav.Link>
+                                        <Nav.Link as={Link} to="/about">About</Nav.Link>
 
                                         {
                                             user?.uid ?

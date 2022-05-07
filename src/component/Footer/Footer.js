@@ -16,7 +16,7 @@ const Footer = () => {
                 textAlign: "center",
                 marginTop: "-50px"
             }}>
-                A Computer Science Portal for Geeks
+                Shotez Group Of Company
             </h1>
             <Container>
                 <Row>
@@ -28,10 +28,10 @@ const Footer = () => {
                     </Column>
                     <Column>
                         <Heading>Services</Heading>
-                        <FooterLink href="#">Writing</FooterLink>
-                        <FooterLink href="#">Internships</FooterLink>
-                        <FooterLink href="#">Coding</FooterLink>
-                        <FooterLink href="#">Teaching</FooterLink>
+                        <FooterLink href="#">TexTile</FooterLink>
+                        <FooterLink href="#">Online Univercity</FooterLink>
+                        <FooterLink href="#">Buying House</FooterLink>
+                        <FooterLink href="#">Exprot & Improt</FooterLink>
                     </Column>
                     <Column>
                         <Heading>Contact Us</Heading>

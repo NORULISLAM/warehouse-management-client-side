@@ -10,8 +10,11 @@ const Banner = () => {
                     alt="First slide"
                 />
                 <Carousel.Caption>
-                    <h1>CodeSandbox</h1>
-                    <p>Free, instant,collabroative sandboxex</p>
+                    <h1>Shotez Group Of Company</h1>
+                    <p>TexTile,
+                        Online Univercity,
+                        Buying House,
+                        Exprot</p>
                     <p>for rapid warhouse</p>
                     <Button variant="light">Learn More</Button>{' '}
                 </Carousel.Caption>
@@ -24,8 +27,11 @@ const Banner = () => {
                 />
 
                 <Carousel.Caption>
-                    <h1>CodeSandbox</h1>
-                    <p>Free, instant,collabroative sandboxex</p>
+                    <h1>Shotez Group Of Company</h1>
+                    <p>TexTile,
+                        Online Univercity,
+                        Buying House,
+                        Exprot</p>
                     <p>for rapid warhouse</p>
                     <Button variant="light">Learn More</Button>{' '}
                 </Carousel.Caption>
@@ -38,8 +44,11 @@ const Banner = () => {
                 />
 
                 <Carousel.Caption>
-                    <h1>CodeSandbox</h1>
-                    <p>Free, instant,collabroative sandboxex</p>
+                    <h1>Shotez Group Of Company</h1>
+                    <p>TexTile,
+                        Online Univercity,
+                        Buying House,
+                        Exprot</p>
                     <p>for rapid warhouse</p>
                     <Button variant="light">Learn More</Button>{' '}
                 </Carousel.Caption>

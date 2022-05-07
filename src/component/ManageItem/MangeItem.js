@@ -1,25 +1,27 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import './manageItem.css'
 
 const MangeItem = ({ product }) => {
-    const { _id, img, name, comment, quantity, seller, price } = product;
+    const { _id, img, name, comment, quantity, seller, price, stock } = product;
     const navigate = useNavigate();
     const navigateToAddItem = id => {
         navigate(`/additem/${id}`);
     }
 
     return (
-        <div className="card-body text-center">
-            <img src={img} className="img-thumbnail rounded" alt="" />
-            <h5 className="card-title">Card title{name}</h5>
 
-            <p className="card-text"> Comment: {comment}</p>
-            <h5>Quantity: {quantity}</h5>
-            <h5>Supplier Name: {seller}</h5>
-            <h5>Price: {price}</h5>
-
-            <button onClick={() => navigateToAddItem(_id)} className="btn btn-info">Update</button>
+        <div className='product'>
+            <img src={img} alt="" />
+            <div className='product-info'>
+                <p className='product-name'>{name}</p>
+                <p>Price:${price}</p>
+                <p><small>Seller:{seller}</small></p>
+                <p><small>Quantity:{stock}</small></p>
+            </div>
+            <button onClick={() => navigateToAddItem(_id)} className="btn btn-info btn-update">Update</button>
         </div>
+
     );
 };
 
