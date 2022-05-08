@@ -1,4 +1,4 @@
-.home-container {
+/* .home-container {
     display: grid;
     grid-template-columns: 4fr 1fr;
 }
@@ -22,4 +22,4 @@
     .manage-container {
         grid-template-columns: repeat(1, 1fr);
     }
-}
+} */

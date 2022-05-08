@@ -8,18 +8,19 @@ const ManageInventory = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are You Sure? DELETE This Item??');
         if (proceed) {
-            const url = `http://localhost:5000/service/${id}`;
+            const url = `https://mighty-plateau-24695.herokuapp.com/service/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+
                     const remaining = inventory.filter(inventor => inventor._id !== id);
                     setInventory(remaining);
                 })
         }
     }
+    console.log(inventory);
     return (
         <div className='container-fluid mx-auto m-5 p-5'>
             <h1 className='text-info text-center mt-4'>Manage Your Inventory</h1>
@@ -30,10 +31,9 @@ const ManageInventory = () => {
                         <thead>
                             <tr>
                                 <th scope="col"><img className='rounded m-3' style={{ width: '40px' }} src={inventor.img} alt="" />{inventor.name}</th>
-                                <th scope="col">Price:{inventor.price}</th>
-                                <th scope="col">Qantity:{inventor.stock}</th>
-                                <th scope="col">Supliyer:{inventor.seller}</th>
-                                <th scope="col"><Link to={`/update/${inventor._id}`}><button className='btn btn-info'>Update</button></Link>
+                                <th scope="col">Price:{inventor.price}$</th>
+                                <th scope="col">description:{inventor.description}</th>
+                                <th scope="col"><Link to={`/update/${inventor._id}`}><button className='btn btn-info'>Add New Item</button></Link>
                                 </th>
                                 <th scope="col"> <button onClick={() => handleDelete(inventor._id)} className='btn btn-danger'>DELETE</button></th>
                             </tr>
