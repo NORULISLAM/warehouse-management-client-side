@@ -1,5 +1,5 @@
 import { sendPasswordResetEmail } from 'firebase/auth';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
@@ -28,6 +28,8 @@ const Loing = () => {
 
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [sendPasswordResetEmail, sending,] = useSendPasswordResetEmail(auth);
+
     const [signInWithGoogle] =
         useSignInWithGoogle(auth);
     let errorElement;
@@ -46,10 +48,11 @@ const Loing = () => {
         event.preventDefault();
 
         signInWithEmailAndPassword(email, password);
-        console.log(email, password)
+
     }
 
     const handlePasswordReset = async () => {
+
         // const email = event.target.email.value;
         if (email) {
             await sendPasswordResetEmail(email)
@@ -99,11 +102,11 @@ const Loing = () => {
 
                 {errorElement}
 
-                <button className='btn btn-link text-primary pe-auto-decoration-none' variant="link" type="submit" onClick={handlePasswordReset}>
+                <button className='btn btn-link text-primary pe-auto text-decoration-none' variant="link" type="submit" onClick={handlePasswordReset}>
                     Resset password?
                 </button>
                 <br />
-                <Button onClick={handlePasswordReset} variant="primary" type="submit">
+                <Button onClick={handlePasswordReset} variant="primary mx-auto w-50 d-block mb-2" type="submit">
                     Log In
                 </Button>
             </Form>

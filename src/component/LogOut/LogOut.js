@@ -1,7 +1,9 @@
 import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
@@ -12,9 +14,17 @@ const LogOut = () => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
 
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [updateProfile, updating, updateError1] = useUpdateProfile(auth);
+
     useEffect(() => {
         if (error) {
-            setError('right password please');
+            setError('do not type fluse password please !! Writing again.');
         }
     }, [error])
 
@@ -31,7 +41,7 @@ const LogOut = () => {
     //     navigate('/home');
     // }
 
-    const handleRegister = event => {
+    const handleRegister = async (event) => {
 
         const form = event.currentTarget;
         event.preventDefault();
@@ -40,16 +50,17 @@ const LogOut = () => {
             return;
         }
         if (!/(?=.*[0-9]).{8,}/.test(password)) {
-            setError('please password input 8 digit')
+            setError('please input password 8 digit number')
             return;
         }
         setValidated(true);
 
         setError('')
-        createUserWithEmailAndPassword(auth, email, password)
+        await createUserWithEmailAndPassword(auth, email, password)
+
             .then(result => {
                 const user = result.user;
-                navigate("/home")
+
                 setEmail('');
                 setPassword('')
                 setName('')
@@ -59,7 +70,9 @@ const LogOut = () => {
                 console.log(error);
                 setError(error.message)
             })
-
+        await updateProfile({ displayName: name });
+        toast('Updated profile');
+        navigate("/home")
         event.preventDefault();
 
 
@@ -113,12 +126,13 @@ const LogOut = () => {
                     </Form.Control.Feedback>
                 </Form.Group>
                 <p className='text-danger'>{error}</p>
-                <Button variant="primary" type="submit">
+                <Button variant="primary mx-auto w-50 d-block mb-2" type="submit">
                     Register
                 </Button>
             </Form>
             <p>Already an Account ? <Link to='/login' className='text-danger pe-auto text-decoration-none' onClick={navigateLogin}>Please Login</Link></p>
             <SocialLogin></SocialLogin>
+            <ToastContainer />
         </div>
     );
 };
